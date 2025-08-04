@@ -3,267 +3,215 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MSN News - Breaking News, World News & Headlines</title>
-    <link rel="stylesheet" href="style.css">
+    <title>MSN News - Breaking News, World News & Videos</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📰</text></svg>">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <!-- Header -->
     <header class="header">
-        <div class="container">
-            <div class="nav-brand">
-                <h1>MSN News</h1>
+        <div class="header-content">
+            <div class="logo">
+                <span class="logo-icon">📰</span>
+                <span class="logo-text">MSN News</span>
             </div>
-            <nav class="nav-menu">
-                <ul>
-                    <li><a href="#" class="nav-link active">Home</a></li>
-                    <li><a href="#" class="nav-link">World</a></li>
-                    <li><a href="#" class="nav-link">Politics</a></li>
-                    <li><a href="#" class="nav-link">Business</a></li>
-                    <li><a href="#" class="nav-link">Technology</a></li>
-                    <li><a href="#" class="nav-link">Sports</a></li>
-                    <li><a href="#" class="nav-link">Entertainment</a></li>
-                </ul>
-            </nav>
-            <div class="header-right">
-                <button class="search-btn">🔍</button>
-                <button class="menu-toggle">☰</button>
+            <div class="search-container">
+                <input type="text" class="search-box" placeholder="Search news..." id="searchInput">
+                <button class="search-btn" onclick="searchNews()">
+                    <span>🔍</span>
+                    Search
+                </button>
             </div>
         </div>
     </header>
 
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-content">
+            <div class="nav-tabs" id="navTabs">
+                <button class="nav-tab active" onclick="filterByCategory('all')">All News</button>
+                <button class="nav-tab" onclick="filterByCategory('technology')">
+                    <span class="tab-icon">💻</span>
+                    Technology
+                </button>
+                <button class="nav-tab" onclick="filterByCategory('world')">
+                    <span class="tab-icon">🌍</span>
+                    World
+                </button>
+                <button class="nav-tab" onclick="filterByCategory('business')">
+                    <span class="tab-icon">💼</span>
+                    Business
+                </button>
+                <button class="nav-tab" onclick="filterByCategory('health')">
+                    <span class="tab-icon">🏥</span>
+                    Health
+                </button>
+                <button class="nav-tab" onclick="filterByCategory('sports')">
+                    <span class="tab-icon">⚽</span>
+                    Sports
+                </button>
+            </div>
+        </div>
+    </nav>
+
     <!-- Main Content -->
-    <main class="main-content">
-        <div class="container">
-            <!-- Hero Section -->
-            <section class="hero-section">
-                <div class="hero-main">
-                    <article class="hero-article">
-                        <img src="https://picsum.photos/600/400?random=1" alt="Breaking News" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAwIiBoZWlnaHQ9IjQwMCIgdmlld0JveD0iMCAwIDYwMCA0MDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI2MDAiIGhlaWdodD0iNDAwIiBmaWxsPSIjMDA2NmNjIi8+Cjx0ZXh0IHg9IjMwMCIgeT0iMjAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSJ3aGl0ZSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjI0Ij5CcmVha2luZyBOZXdzPC90ZXh0Pgo8L3N2Zz4K'">
-                        <div class="hero-content">
-                            <span class="category">Breaking News</span>
-                            <h2>Major Global Summit Addresses Climate Change and Economic Recovery</h2>
-                            <p>World leaders gather to discuss unprecedented cooperation on climate initiatives and post-pandemic economic strategies...</p>
-                            <div class="article-meta">
-                                <span class="author">By Sarah Johnson</span>
-                                <span class="timestamp">2 hours ago</span>
-                            </div>
-                        </div>
-                    </article>
-                </div>
-                <div class="hero-sidebar">
-                    <div class="trending-news">
-                        <h3>Trending Now</h3>
-                        <div class="trending-item">
-                            <img src="https://picsum.photos/100/70?random=2" alt="Tech News" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjcwIiB2aWV3Qm94PSIwIDAgMTAwIDcwIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjcwIiBmaWxsPSIjY2M2NjAwIi8+Cjx0ZXh0IHg9IjUwIiB5PSIzNSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0id2hpdGUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxMiI+VGVjaDwvdGV4dD4KPC9zdmc+Cg=='">
-                            <div class="trending-content">
-                                <h4>Tech Giants Announce New AI Partnership</h4>
-                                <span class="timestamp">1 hour ago</span>
-                            </div>
-                        </div>
-                        <div class="trending-item">
-                            <img src="https://picsum.photos/100/70?random=3" alt="Sports News" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjcwIiB2aWV3Qm94PSIwIDAgMTAwIDcwIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjcwIiBmaWxsPSIjMDA5OTAwIi8+Cjx0ZXh0IHg9IjUwIiB5PSIzNSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0id2hpdGUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxMiI+U3BvcnRzPC90ZXh0Pgo8L3N2Zz4K'">
-                            <div class="trending-content">
-                                <h4>Championship Finals Set Record Viewership</h4>
-                                <span class="timestamp">3 hours ago</span>
-                            </div>
-                        </div>
-                        <div class="trending-item">
-                            <img src="https://picsum.photos/100/70?random=4" alt="Entertainment News" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjcwIiB2aWV3Qm94PSIwIDAgMTAwIDcwIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjcwIiBmaWxsPSIjY2MwMDY2Ii8+Cjx0ZXh0IHg9IjUwIiB5PSIzNSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0id2hpdGUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxMCI+RW50ZXJ0YWlubWVudDwvdGV4dD4KPC9zdmc+Cg=='">
-                            <div class="trending-content">
-                                <h4>Movie Awards Season Kicks Off</h4>
-                                <span class="timestamp">4 hours ago</span>
-                            </div>
-                        </div>
-                    </div>
+    <div class="main-content">
+        <div class="left-content">
+            <!-- Featured News -->
+            <section class="featured-section" id="featuredSection">
+                <div class="loading">
+                    <div class="spinner"></div>
+                    <p>Loading featured news...</p>
                 </div>
             </section>
 
             <!-- News Grid -->
-            <section class="news-grid">
-                <div class="news-main">
-                    <div class="section-header">
-                        <h2>Latest News</h2>
-                        <div class="filter-tabs">
-                            <button class="filter-tab active">All</button>
-                            <button class="filter-tab">World</button>
-                            <button class="filter-tab">Politics</button>
-                            <button class="filter-tab">Business</button>
-                        </div>
-                    </div>
-                    
-                    <div class="news-articles">
-                        <article class="news-card">
-                            <img src="https://picsum.photos/300/200?random=5" alt="World News" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDMwMCAyMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIzMDAiIGhlaWdodD0iMjAwIiBmaWxsPSIjNjYwMGNjIi8+Cjx0ZXh0IHg9IjE1MCIgeT0iMTAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSJ3aGl0ZSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE4Ij5Xb3JsZCBOZXdzPC90ZXh0Pgo8L3N2Zz4K'">
-                            <div class="card-content">
-                                <span class="category">World</span>
-                                <h3>International Trade Agreements Reshape Global Markets</h3>
-                                <p>New bilateral agreements between major economies signal a shift in global trade dynamics...</p>
-                                <div class="article-meta">
-                                    <span class="author">Michael Chen</span>
-                                    <span class="timestamp">5 hours ago</span>
-                                </div>
-                            </div>
-                        </article>
-
-                        <article class="news-card">
-                            <img src="https://picsum.photos/300/200?random=6" alt="Politics News" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDMwMCAyMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIzMDAiIGhlaWdodD0iMjAwIiBmaWxsPSIjY2MzMzAwIi8+Cjx0ZXh0IHg9IjE1MCIgeT0iMTAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSJ3aGl0ZSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE4Ij5Qb2xpdGljczwvdGV4dD4KPC9zdmc+Cg=='">
-                            <div class="card-content">
-                                <span class="category">Politics</span>
-                                <h3>Senate Passes Landmark Infrastructure Bill</h3>
-                                <p>Bipartisan support leads to historic investment in transportation and digital infrastructure...</p>
-                                <div class="article-meta">
-                                    <span class="author">Jennifer Davis</span>
-                                    <span class="timestamp">6 hours ago</span>
-                                </div>
-                            </div>
-                        </article>
-
-                        <article class="news-card">
-                            <img src="https://picsum.photos/300/200?random=7" alt="Business News" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDMwMCAyMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIzMDAiIGhlaWdodD0iMjAwIiBmaWxsPSIjMzM5OTY2Ii8+Cjx0ZXh0IHg9IjE1MCIgeT0iMTAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSJ3aGl0ZSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE4Ij5CdXNpbmVzczwvdGV4dD4KPC9zdmc+Cg=='">
-                            <div class="card-content">
-                                <span class="category">Business</span>
-                                <h3>Stock Markets Reach New Heights Amid Economic Optimism</h3>
-                                <p>Major indices post gains as investors show confidence in economic recovery plans...</p>
-                                <div class="article-meta">
-                                    <span class="author">Robert Kim</span>
-                                    <span class="timestamp">7 hours ago</span>
-                                </div>
-                            </div>
-                        </article>
-
-                        <article class="news-card">
-                            <img src="https://picsum.photos/300/200?random=8" alt="Technology News" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDMwMCAyMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIzMDAiIGhlaWdodD0iMjAwIiBmaWxsPSIjY2M2NjAwIi8+Cjx0ZXh0IHg9IjE1MCIgeT0iMTAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSJ3aGl0ZSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE4Ij5UZWNobm9sb2d5PC90ZXh0Pgo8L3N2Zz4K'">
-                            <div class="card-content">
-                                <span class="category">Technology</span>
-                                <h3>Revolutionary Battery Technology Promises Faster Charging</h3>
-                                <p>Scientists develop new lithium-silicon batteries that could transform electric vehicles...</p>
-                                <div class="article-meta">
-                                    <span class="author">Dr. Emily Watson</span>
-                                    <span class="timestamp">8 hours ago</span>
-                                </div>
-                            </div>
-                        </article>
-
-                        <article class="news-card">
-                            <img src="https://picsum.photos/300/200?random=9" alt="Sports News" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDMwMCAyMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIzMDAiIGhlaWdodD0iMjAwIiBmaWxsPSIjMDA5OTAwIi8+Cjx0ZXh0IHg9IjE1MCIgeT0iMTAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSJ3aGl0ZSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE4Ij5TcG9ydHM8L3RleHQ+Cjwvc3ZnPgo='">
-                            <div class="card-content">
-                                <span class="category">Sports</span>
-                                <h3>Olympic Preparations Intensify as Games Approach</h3>
-                                <p>Athletes and organizers make final preparations for the upcoming Olympic Games...</p>
-                                <div class="article-meta">
-                                    <span class="author">Mark Thompson</span>
-                                    <span class="timestamp">9 hours ago</span>
-                                </div>
-                            </div>
-                        </article>
-
-                        <article class="news-card">
-                            <img src="https://picsum.photos/300/200?random=10" alt="Entertainment News" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDMwMCAyMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIzMDAiIGhlaWdodD0iMjAwIiBmaWxsPSIjY2MwMDY2Ii8+Cjx0ZXh0IHg9IjE1MCIgeT0iMTAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSJ3aGl0ZSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE4Ij5FbnRlcnRhaW5tZW50PC90ZXh0Pgo8L3N2Zz4K'">
-                            <div class="card-content">
-                                <span class="category">Entertainment</span>
-                                <h3>Streaming Wars Heat Up with New Platform Launches</h3>
-                                <p>Major media companies announce competing streaming services with exclusive content...</p>
-                                <div class="article-meta">
-                                    <span class="author">Lisa Martinez</span>
-                                    <span class="timestamp">10 hours ago</span>
-                                </div>
-                            </div>
-                        </article>
+            <section class="news-section">
+                <h2 class="section-title">Latest News</h2>
+                <div class="news-grid" id="newsGrid">
+                    <div class="loading">
+                        <div class="spinner"></div>
+                        <p>Loading news articles...</p>
                     </div>
                 </div>
-
-                <aside class="sidebar">
-                    <div class="weather-widget">
-                        <h3>Weather</h3>
-                        <div class="weather-info">
-                            <div class="weather-icon">☀️</div>
-                            <div class="weather-details">
-                                <div class="temperature">24°C</div>
-                                <div class="location">New York, NY</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="popular-stories">
-                        <h3>Most Popular</h3>
-                        <div class="popular-item">
-                            <span class="rank">1</span>
-                            <div class="popular-content">
-                                <h4>Celebrity Couple Announces Engagement</h4>
-                                <span class="views">2.3M views</span>
-                            </div>
-                        </div>
-                        <div class="popular-item">
-                            <span class="rank">2</span>
-                            <div class="popular-content">
-                                <h4>New Archaeological Discovery Changes History</h4>
-                                <span class="views">1.8M views</span>
-                            </div>
-                        </div>
-                        <div class="popular-item">
-                            <span class="rank">3</span>
-                            <div class="popular-content">
-                                <h4>Major Tech Company Faces Antitrust Probe</h4>
-                                <span class="views">1.5M views</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="newsletter-signup">
-                        <h3>Stay Updated</h3>
-                        <p>Get the latest news delivered to your inbox</p>
-                        <form class="newsletter-form">
-                            <input type="email" placeholder="Enter your email" required>
-                            <button type="submit">Subscribe</button>
-                        </form>
-                    </div>
-                </aside>
+                <div class="load-more-container">
+                    <button class="load-more-btn" id="loadMoreBtn" onclick="loadMoreNews()" style="display: none;">
+                        Load More Articles
+                    </button>
+                </div>
             </section>
         </div>
-    </main>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h4>MSN News</h4>
-                    <p>Your trusted source for breaking news and current events</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Categories</h4>
-                    <ul>
-                        <li><a href="#">World</a></li>
-                        <li><a href="#">Politics</a></li>
-                        <li><a href="#">Business</a></li>
-                        <li><a href="#">Technology</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Company</h4>
-                    <ul>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Contact</a></li>
-                        <li><a href="#">Careers</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Follow Us</h4>
-                    <div class="social-links">
-                        <a href="#">Facebook</a>
-                        <a href="#">Twitter</a>
-                        <a href="#">Instagram</a>
-                        <a href="#">YouTube</a>
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <!-- Trending News -->
+            <div class="sidebar-section">
+                <h3 class="sidebar-title">
+                    <span class="title-icon">🔥</span>
+                    Trending Now
+                </h3>
+                <div id="trendingNews">
+                    <div class="loading">
+                        <div class="spinner-small"></div>
+                        Loading trending...
                     </div>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 MSN News. All rights reserved.</p>
+
+            <!-- Categories Widget -->
+            <div class="sidebar-section">
+                <h3 class="sidebar-title">
+                    <span class="title-icon">📂</span>
+                    Categories
+                </h3>
+                <div id="categoriesWidget">
+                    <div class="loading">
+                        <div class="spinner-small"></div>
+                        Loading categories...
+                    </div>
+                </div>
+            </div>
+
+            <!-- Weather Widget -->
+            <div class="sidebar-section weather-widget">
+                <h3 class="sidebar-title">
+                    <span class="title-icon">🌤️</span>
+                    Weather
+                </h3>
+                <div class="weather-info">
+                    <div class="weather-location">New York</div>
+                    <div class="weather-temp">22°C</div>
+                    <div class="weather-desc">Partly Cloudy</div>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Admin Panel -->
+    <div class="admin-panel" id="adminPanel">
+        <div class="admin-header">
+            <h3>
+                <span>⚙️</span>
+                Admin Panel
+            </h3>
+            <button class="close-admin" onclick="toggleAdmin()">&times;</button>
+        </div>
+        <div class="admin-content">
+            <form class="admin-form" id="newsForm">
+                <div class="form-group">
+                    <label for="newsTitle">Title *</label>
+                    <input type="text" id="newsTitle" name="title" required placeholder="Enter news title">
+                </div>
+                
+                <div class="form-group">
+                    <label for="newsContent">Content *</label>
+                    <textarea id="newsContent" name="content" required placeholder="Enter news content (minimum 50 characters)"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="newsAuthor">Author *</label>
+                    <input type="text" id="newsAuthor" name="author" required placeholder="Enter author name">
+                </div>
+                
+                <div class="form-group">
+                    <label for="newsCategory">Category *</label>
+                    <select id="newsCategory" name="category" required>
+                        <option value="">Select Category</option>
+                        <option value="technology">💻 Technology</option>
+                        <option value="world">🌍 World</option>
+                        <option value="business">💼 Business</option>
+                        <option value="health">🏥 Health</option>
+                        <option value="sports">⚽ Sports</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="newsImage">Image URL</label>
+                    <input type="url" id="newsImage" name="image" placeholder="https://example.com/image.jpg">
+                </div>
+                
+                <div class="form-group checkbox-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="newsFeatured" name="featured">
+                        <span class="checkmark"></span>
+                        Featured Article
+                    </label>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">
+                        <span id="submitBtnText">Create Article</span>
+                    </button>
+                    <button type="button" class="btn btn-secondary" onclick="resetForm()">
+                        Reset Form
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Admin Toggle Button -->
+    <button class="admin-toggle" onclick="toggleAdmin()" title="Admin Panel">
+        <span>⚙️</span>
+    </button>
+
+    <!-- News Detail Modal -->
+    <div class="modal" id="newsModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">News Article</h2>
+                <button class="modal-close" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- News detail content will be loaded here -->
             </div>
         </div>
-    </footer>
+    </div>
 
-    <script src="script.js"></script>
+    <!-- Toast Notifications -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- JavaScript -->
+    <script src="server.js"></script>
 </body>
 </html>
